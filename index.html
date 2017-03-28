@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <script type="text/javascript" src="angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body ng-controller="MainCtrl" class="container-fluid">
+    <button type="button" ng-click="init()" style="margin-left: 50%;">Play</button>
+    <div id="wrapper">
+        <div id="doboz">
+            <gomboc ng-repeat="item in items" ng-click="katt(item)"></gomboc>
+        </div>
+    </div>
+</body>
+
+</html>
