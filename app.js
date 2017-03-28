@@ -4,55 +4,57 @@ app.service('icons', function() {
     this.pairs = [];
 
     this.items = [{
+        // this really shouldn't contain each object TWICE :(
+        // can't these things extend from a sort of common item class?
             src: "pics/james.jpg",
             id: "d",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
         }, {
             src: "pics/bela.jpg",
             id: "a",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
         }, {
             src: "pics/greta.jpg",
             id: "c",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
         }, {
             src: "pics/cary.jpg",
             id: "b",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
 
@@ -60,13 +62,13 @@ app.service('icons', function() {
             src: "pics/bela.jpg",
             id: "a",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
 
@@ -74,39 +76,39 @@ app.service('icons', function() {
             src: "pics/cary.jpg",
             id: "b",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
         }, {
             src: "pics/greta.jpg",
             id: "c",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
         }, {
             src: "pics/james.jpg",
             id: "d",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
         },
@@ -114,13 +116,13 @@ app.service('icons', function() {
             src: "pics/jimmie.jpg",
             id: "e",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
         },
@@ -128,39 +130,39 @@ app.service('icons', function() {
             src: "pics/jimmie.jpg",
             id: "e",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
         }, {
             src: "pics/marlene.jpg",
             id: "f",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
         }, {
             src: "pics/marlene.jpg",
             id: "f",
             notinplay: true,
+            isDisabled: false,
             found: false,
             reset: function() {
                 this.notinplay = true;
                 this.found = false;
             },
             change: function() {
-                /*this.src = 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSCVG2tzbuMpLg1c8rRVu3Xb8kfhTvcqHF4YvV7mLaJEBH3kTSWYQ';*/
                 this.found = true;
             }
         }
@@ -189,6 +191,7 @@ app.service('icons', function() {
 
     this.dropPair = function() {
         for (var c = 0; c < this.pairs.length; c++) {
+            this.pairs[c].isDisabled = false;
             this.pairs[c].notinplay = true;
         }
         this.pairs = [];
@@ -224,9 +227,12 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
     };
     $scope.items = [];
 
+
     $scope.pairFound = function() {
         // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
         for (var b = 0; b < icons.pairs.length; b++) {
+            // ez kell-e?
+            icons.pairs[b].isDisabled = false;
             icons.pairs[b].change();
         }
         icons.pairs = [];
@@ -253,9 +259,10 @@ app.directive('gomboc', function(icons) {
         templateUrl: 'gomboc.html',
         controller: function($scope, $timeout) {
             $scope.katt = function(elem) {
+                if(elem.isDisabled !== true) {
+                    elem.isDisabled=true;
                 elem.notinplay = false;
                 icons.pairs.push(elem);
-
                 if (icons.pairs.length === 2) {
 
                     if (elem.id === icons.pairs[0].id) {
@@ -267,6 +274,7 @@ app.directive('gomboc', function(icons) {
                     }
 
                 }
+            }
             };
         }
     };
