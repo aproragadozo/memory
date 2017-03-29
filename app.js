@@ -4,8 +4,8 @@ app.service('icons', function() {
     this.pairs = [];
 
     this.items = [{
-        // this really shouldn't contain each object TWICE :(
-        // can't these things extend from a sort of common item class?
+            // this really shouldn't contain each object TWICE :(
+            // can't these things extend from a sort of common item class?
             src: "pics/james.jpg",
             id: "d",
             notinplay: true,
@@ -13,6 +13,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -26,6 +27,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -39,6 +41,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -52,6 +55,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -66,6 +70,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -80,6 +85,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -93,6 +99,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -106,6 +113,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -120,6 +128,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -134,6 +143,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -147,6 +157,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -160,6 +171,7 @@ app.service('icons', function() {
             found: false,
             reset: function() {
                 this.notinplay = true;
+                this.isDisabled = false;
                 this.found = false;
             },
             change: function() {
@@ -167,27 +179,6 @@ app.service('icons', function() {
             }
         }
     ];
-
-    /*this.pairFound = function() {
-      // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
-      for(var b = 0; b<this.pairs.length; b++) {
-        this.pairs[b].change();
-      }
-      this.pairs = [];
-      
-      // ez nagyon primitív
-      // kéne egy init a controller scope-on,
-      // és azt kéne hívni!
-      if(this.items.every(function(x) {return x.found === true;})){
-        
-        angular.forEach(this.items, function(current) {
-          current.reset();
-          // az egyes itemek src-jét is vissza kell adni!
-          // tán angular.copy-val?
-        });
-        }
-        $scope.init();
-      };*/
 
     this.dropPair = function() {
         for (var c = 0; c < this.pairs.length; c++) {
@@ -231,8 +222,7 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
     $scope.pairFound = function() {
         // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
         for (var b = 0; b < icons.pairs.length; b++) {
-            // ez kell-e?
-            icons.pairs[b].isDisabled = false;
+            // and we're not enabling the cards here!
             icons.pairs[b].change();
         }
         icons.pairs = [];
@@ -259,22 +249,22 @@ app.directive('gomboc', function(icons) {
         templateUrl: 'gomboc.html',
         controller: function($scope, $timeout) {
             $scope.katt = function(elem) {
-                if(elem.isDisabled !== true) {
-                    elem.isDisabled=true;
-                elem.notinplay = false;
-                icons.pairs.push(elem);
-                if (icons.pairs.length === 2) {
+                if (elem.isDisabled !== true) {
+                    elem.isDisabled = true;
+                    elem.notinplay = false;
+                    icons.pairs.push(elem);
+                    if (icons.pairs.length === 2) {
 
-                    if (elem.id === icons.pairs[0].id) {
-                        $scope.pairFound();
-                    } else {
-                        $timeout(function() {
-                            icons.dropPair();
-                        }, 1000);
+                        if (elem.id === icons.pairs[0].id) {
+                            $scope.pairFound();
+                        } else {
+                            $timeout(function() {
+                                icons.dropPair();
+                            }, 1000);
+                        }
+
                     }
-
                 }
-            }
             };
         }
     };
