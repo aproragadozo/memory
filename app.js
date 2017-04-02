@@ -33,6 +33,7 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
             if (indices.indexOf(randomnumber) > -1) continue;
             indices[indices.length] = randomnumber;
         }
+
         return $http({
                 method: 'POST',
                 url: api
@@ -47,188 +48,6 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
                 return pictures;
             })
     };
-    this.items = this.getPics();
-    [{
-            src: this.pics[0],
-=======
-    this.items = [{
-            // this really shouldn't contain each object TWICE :(
-            // can't these things extend from a sort of common item class?
-            src: "pics/james.jpg",
->>>>>>> origin/master
-            id: "d",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[1],
-            id: "a",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[2],
-            id: "c",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[3],
-            id: "b",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-
-        }, {
-            src: this.pics[1],
-            id: "a",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-
-        }, {
-            src: this.pics[3],
-            id: "b",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[2],
-            id: "c",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[0],
-            id: "d",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        },
-        {
-            src: this.pics[4],
-            id: "e",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        },
-        {
-            src: this.pics[4],
-            id: "e",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[5],
-            id: "f",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[5],
-            id: "f",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }
-    ];
-    */
 
     this.dropPair = function() {
         for (var c = 0; c < this.pairs.length; c++) {
@@ -271,7 +90,6 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
                 console.error('Failed!', error)
             })
     };
-
     $scope.pairFound = function() {
         // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
         for (var b = 0; b < icons.pairs.length; b++) {
@@ -281,6 +99,7 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
         icons.pairs = [];
 
         if ($scope.items.every(function(x) { return x.found === true; })) {
+
             $scope.init();
         }
     };
@@ -298,6 +117,7 @@ app.directive('gomboc', function(icons) {
                     elem.notinplay = false;
                     icons.pairs.push(elem);
                     if (icons.pairs.length === 2) {
+
                         if (elem.src === icons.pairs[0].src) {
                             $scope.pairFound();
                         } else {
