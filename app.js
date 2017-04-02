@@ -33,7 +33,6 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
             if (indices.indexOf(randomnumber) > -1) continue;
             indices[indices.length] = randomnumber;
         }
-
         return $http({
                 method: 'POST',
                 url: api
@@ -48,10 +47,15 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
                 return pictures;
             })
     };
-    /* there won't be an icons.items - we'll just call icons.getPics() in $scope.init
     this.items = this.getPics();
     [{
             src: this.pics[0],
+=======
+    this.items = [{
+            // this really shouldn't contain each object TWICE :(
+            // can't these things extend from a sort of common item class?
+            src: "pics/james.jpg",
+>>>>>>> origin/master
             id: "d",
             notinplay: true,
             isDisabled: false,
@@ -226,27 +230,6 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
     ];
     */
 
-    /*this.pairFound = function() {
-      // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
-      for(var b = 0; b<this.pairs.length; b++) {
-        this.pairs[b].change();
-      }
-      this.pairs = [];
-      
-      // ez nagyon primitív
-      // kéne egy init a controller scope-on,
-      // és azt kéne hívni!
-      if(this.items.every(function(x) {return x.found === true;})){
-        
-        angular.forEach(this.items, function(current) {
-          current.reset();
-          // az egyes itemek src-jét is vissza kell adni!
-          // tán angular.copy-val?
-        });
-        }
-        $scope.init();
-      };*/
-
     this.dropPair = function() {
         for (var c = 0; c < this.pairs.length; c++) {
             this.pairs[c].isDisabled = false;
@@ -288,19 +271,6 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
                 console.error('Failed!', error)
             })
     };
-    /*
-    $scope.init = function() {
-        // ó, de akkor is kell promise, mert getPics aszinkron!
-        $scope.items = $scope.shuffle(icons.getPics());
-        console.log($scope.items.length);
-        // this might not even be necessary (not to mention it not working without icons.items)
-        for (var f = 0; f < $scope.items.length; f++) {
-            $scope.items[f].reset();
-        }
-        console.log($scope.items.length);
-    };
-    */
-
 
     $scope.pairFound = function() {
         // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
@@ -310,17 +280,7 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
         }
         icons.pairs = [];
 
-        // ez nagyon primitív
-        // kéne egy init a controller scope-on,
-        // és azt kéne hívni!
         if ($scope.items.every(function(x) { return x.found === true; })) {
-            /* this might also not be needed
-            angular.forEach(icons.items, function(current) {
-                current.reset();
-                // az egyes itemek src-jét is vissza kell adni!
-                // tán angular.copy-val?
-            });
-            */
             $scope.init();
         }
     };
@@ -338,7 +298,6 @@ app.directive('gomboc', function(icons) {
                     elem.notinplay = false;
                     icons.pairs.push(elem);
                     if (icons.pairs.length === 2) {
-
                         if (elem.src === icons.pairs[0].src) {
                             $scope.pairFound();
                         } else {
