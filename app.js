@@ -50,207 +50,6 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
                 return pictures;
             })
     };
-<<<<<<< HEAD
-    /* there won't be an icons.items - we'll just call icons.getPics() in $scope.init
-    this.items = this.getPics();
-    [{
-            src: this.pics[0],
-            id: "d",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[1],
-            id: "a",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[2],
-            id: "c",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[3],
-            id: "b",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-
-        }, {
-            src: this.pics[1],
-            id: "a",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-
-        }, {
-            src: this.pics[3],
-            id: "b",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[2],
-            id: "c",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[0],
-            id: "d",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        },
-        {
-            src: this.pics[4],
-            id: "e",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        },
-        {
-            src: this.pics[4],
-            id: "e",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[5],
-            id: "f",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }, {
-            src: this.pics[5],
-            id: "f",
-            notinplay: true,
-            isDisabled: false,
-            found: false,
-            reset: function() {
-                this.notinplay = true;
-                this.isDisabled = false;
-                this.found = false;
-            },
-            change: function() {
-                this.found = true;
-            }
-        }
-    ];
-    */
-=======
->>>>>>> origin/master
-
-    /*this.pairFound = function() {
-      // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
-      for(var b = 0; b<this.pairs.length; b++) {
-        this.pairs[b].change();
-      }
-      this.pairs = [];
-      
-      // ez nagyon primitív
-      // kéne egy init a controller scope-on,
-      // és azt kéne hívni!
-      if(this.items.every(function(x) {return x.found === true;})){
-        
-        angular.forEach(this.items, function(current) {
-          current.reset();
-          // az egyes itemek src-jét is vissza kell adni!
-          // tán angular.copy-val?
-        });
-        }
-        $scope.init();
-      };*/
 
     // moved dropPair from the service into the controller
 }]);
@@ -291,19 +90,6 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
                 console.error('Failed!', error)
             })
     };
-<<<<<<< HEAD
-    /*
-    $scope.init = function() {
-        // ó, de akkor is kell promise, mert getPics aszinkron!
-        $scope.items = $scope.shuffle(icons.getPics());
-        console.log($scope.items.length);
-        // this might not even be necessary (not to mention it not working without icons.items)
-        for (var f = 0; f < $scope.items.length; f++) {
-            $scope.items[f].reset();
-        }
-        console.log($scope.items.length);
-    };
-    */
     $scope.dropPair = function() {
         for (var c = 0; c < icons.pairs.length; c++) {
             icons.pairs[c].isDisabled = false;
@@ -318,8 +104,6 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
         icons.pairs = [];
     };
 
-=======
->>>>>>> origin/master
     $scope.pairFound = function() {
         // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
         for (var b = 0; b < icons.pairs.length; b++) {
@@ -335,7 +119,6 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
             }
         });
         if ($scope.items.every(function(x) { return x.found === true; })) {
-<<<<<<< HEAD
             /* this might also not be needed
             angular.forEach(icons.items, function(current) {
                 current.reset();
@@ -343,9 +126,6 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
                 // tán angular.copy-val?
             });
             */
-=======
-
->>>>>>> origin/master
             $scope.init();
         }
     };
@@ -363,13 +143,9 @@ app.directive('gomboc', function(icons) {
                     elem.notinplay = false;
                     icons.pairs.push(elem);
                     if (icons.pairs.length === 2) {
-<<<<<<< HEAD
                         $scope.items.forEach(function(current, index, array) {
                             current.isDisabled = true;
                         })
-=======
-
->>>>>>> origin/master
                         if (elem.src === icons.pairs[0].src) {
                             $scope.pairFound();
                         } else {
