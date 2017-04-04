@@ -50,6 +50,7 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
                 return pictures;
             })
     };
+<<<<<<< HEAD
     /* there won't be an icons.items - we'll just call icons.getPics() in $scope.init
     this.items = this.getPics();
     [{
@@ -227,6 +228,8 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
         }
     ];
     */
+=======
+>>>>>>> origin/master
 
     /*this.pairFound = function() {
       // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
@@ -288,6 +291,7 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
                 console.error('Failed!', error)
             })
     };
+<<<<<<< HEAD
     /*
     $scope.init = function() {
         // ó, de akkor is kell promise, mert getPics aszinkron!
@@ -314,6 +318,8 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
         icons.pairs = [];
     };
 
+=======
+>>>>>>> origin/master
     $scope.pairFound = function() {
         // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
         for (var b = 0; b < icons.pairs.length; b++) {
@@ -329,6 +335,7 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
             }
         });
         if ($scope.items.every(function(x) { return x.found === true; })) {
+<<<<<<< HEAD
             /* this might also not be needed
             angular.forEach(icons.items, function(current) {
                 current.reset();
@@ -336,6 +343,9 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
                 // tán angular.copy-val?
             });
             */
+=======
+
+>>>>>>> origin/master
             $scope.init();
         }
     };
@@ -353,9 +363,13 @@ app.directive('gomboc', function(icons) {
                     elem.notinplay = false;
                     icons.pairs.push(elem);
                     if (icons.pairs.length === 2) {
+<<<<<<< HEAD
                         $scope.items.forEach(function(current, index, array) {
                             current.isDisabled = true;
                         })
+=======
+
+>>>>>>> origin/master
                         if (elem.src === icons.pairs[0].src) {
                             $scope.pairFound();
                         } else {
