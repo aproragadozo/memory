@@ -11,7 +11,9 @@
 </head>
 
 <body ng-controller="MainCtrl" class="container-fluid">
-    <button type="button" ng-click="init()" style="margin-left: 50%;">Play</button>
+    <div id="splash" ng-show="splash">
+        <button type="button" ng-click="init()"><span>Play</span></button>
+    </div>
     <div id="wrapper">
         <div id="doboz">
             <gomboc ng-repeat="item in items" ng-click="katt(item)"></gomboc>

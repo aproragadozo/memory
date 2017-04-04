@@ -1,3 +1,36 @@
+#splash {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url(https://media.giphy.com/media/12SXVd8bmXdSg0/giphy.gif) no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
+button {
+    display: flex;
+    align-self: center;
+    width: 12vw;
+    height: 7vh;
+    font-size: 2.5vh;
+}
+
+button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #wrapper {
     height: 90vh;
     max-width: 100vw;
@@ -9,7 +42,6 @@
     align-items: center;
     align-content: center;
     justify-content: space-around;
-    /*border: 1px dashed red;*/
 }
 
 #doboz {

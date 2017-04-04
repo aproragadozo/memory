@@ -19,6 +19,7 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
         };
         this.change = function() {
             this.found = true;
+            this.isDisabled = true;
         }
     }
     // function for the ajax call that we'll stick into the promise-maker
@@ -33,6 +34,7 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
             if (indices.indexOf(randomnumber) > -1) continue;
             indices[indices.length] = randomnumber;
         }
+
         return $http({
                 method: 'POST',
                 url: api
@@ -44,18 +46,14 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
                     pictures.push(new Item(unescape(response.data.photos.photo[current].url_q), index));
                     pictures.push(new Item(unescape(response.data.photos.photo[current].url_q), (index + 1)));
                 })
+                this.pics = pictures;
                 return pictures;
             })
     };
+    /* there won't be an icons.items - we'll just call icons.getPics() in $scope.init
     this.items = this.getPics();
     [{
             src: this.pics[0],
-=======
-    this.items = [{
-            // this really shouldn't contain each object TWICE :(
-            // can't these things extend from a sort of common item class?
-            src: "pics/james.jpg",
->>>>>>> origin/master
             id: "d",
             notinplay: true,
             isDisabled: false,
@@ -230,16 +228,34 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
     ];
     */
 
-    this.dropPair = function() {
-        for (var c = 0; c < this.pairs.length; c++) {
-            this.pairs[c].isDisabled = false;
-            this.pairs[c].notinplay = true;
+    /*this.pairFound = function() {
+      // a tárolt pár mindkét tagjának togglézd át az src-jét, és nullázd a pártárat
+      for(var b = 0; b<this.pairs.length; b++) {
+        this.pairs[b].change();
+      }
+      this.pairs = [];
+      
+      // ez nagyon primitív
+      // kéne egy init a controller scope-on,
+      // és azt kéne hívni!
+      if(this.items.every(function(x) {return x.found === true;})){
+        
+        angular.forEach(this.items, function(current) {
+          current.reset();
+          // az egyes itemek src-jét is vissza kell adni!
+          // tán angular.copy-val?
+        });
         }
-        this.pairs = [];
-    };
+        $scope.init();
+      };*/
+
+    // moved dropPair from the service into the controller
 }]);
 
 app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $timeout, icons) {
+    // show the splash or not
+    $scope.splash = true;
+
     // the Fisher-Yates shuffle
     $scope.shuffle = function(array) {
         if (array) {
@@ -266,10 +282,36 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
         icons.getPics()
             .then(function(response) {
                 $scope.items = $scope.shuffle(response);
+                $scope.splash = false;
             })
             .catch(function(error) {
                 console.error('Failed!', error)
             })
+    };
+    /*
+    $scope.init = function() {
+        // ó, de akkor is kell promise, mert getPics aszinkron!
+        $scope.items = $scope.shuffle(icons.getPics());
+        console.log($scope.items.length);
+        // this might not even be necessary (not to mention it not working without icons.items)
+        for (var f = 0; f < $scope.items.length; f++) {
+            $scope.items[f].reset();
+        }
+        console.log($scope.items.length);
+    };
+    */
+    $scope.dropPair = function() {
+        for (var c = 0; c < icons.pairs.length; c++) {
+            icons.pairs[c].isDisabled = false;
+            icons.pairs[c].notinplay = true;
+        }
+        // re-enable the items that haven't yet been found
+        $scope.items.forEach(function(current, index, array) {
+            if (!current.found) {
+                current.isDisabled = false;
+            }
+        });
+        icons.pairs = [];
     };
 
     $scope.pairFound = function() {
@@ -280,7 +322,20 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
         }
         icons.pairs = [];
 
+        // re-enable the items that haven't yet been found
+        $scope.items.forEach(function(current, index, array) {
+            if (!current.found) {
+                current.isDisabled = false;
+            }
+        });
         if ($scope.items.every(function(x) { return x.found === true; })) {
+            /* this might also not be needed
+            angular.forEach(icons.items, function(current) {
+                current.reset();
+                // az egyes itemek src-jét is vissza kell adni!
+                // tán angular.copy-val?
+            });
+            */
             $scope.init();
         }
     };
@@ -298,12 +353,15 @@ app.directive('gomboc', function(icons) {
                     elem.notinplay = false;
                     icons.pairs.push(elem);
                     if (icons.pairs.length === 2) {
+                        $scope.items.forEach(function(current, index, array) {
+                            current.isDisabled = true;
+                        })
                         if (elem.src === icons.pairs[0].src) {
                             $scope.pairFound();
                         } else {
                             $timeout(function() {
-                                icons.dropPair();
-                            }, 1000);
+                                $scope.dropPair();
+                            }, 1200);
                         }
 
                     }
