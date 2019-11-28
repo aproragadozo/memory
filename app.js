@@ -135,7 +135,7 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
 app.directive('gomboc', function(icons) {
     return {
         restrict: 'E',
-        templateUrl: 'gomboc.html',
+        templateUrl: '/gomboc.html',
         controller: function($scope, $timeout) {
             $scope.katt = function(elem) {
                 if (elem.isDisabled !== true) {
