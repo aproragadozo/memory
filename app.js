@@ -29,7 +29,7 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
 
         var indices = [];
         // non-duplicate numbers
-        while (indices.length < 6) {
+        while (indices.length < 8) {
             var randomnumber = Math.ceil(Math.random() * 99);
             if (indices.indexOf(randomnumber) > -1) continue;
             indices[indices.length] = randomnumber;

@@ -64,7 +64,7 @@ gomboc {
     justify-content: center;
     align-content: center;
     width: calc(100% * (1/4));
-    height: calc(100% *(1/3));
+    height: calc(100% *(1/4));
     box-sizing: border-box;
     border: 1px solid black;
 }
