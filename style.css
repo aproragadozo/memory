@@ -16,6 +16,24 @@
     justify-content: space-around;
 }
 
+#replay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url(https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aTlobWtpNzB4Zm1mbnBsZTg5bWtqbnVtaDQyNzh4MDF5OTVxdWQ3bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/EbMuFvuo6bgt0enjkT/giphy.gif) no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
 button {
     display: flex;
     align-self: center;
