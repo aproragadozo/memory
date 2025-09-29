@@ -22,6 +22,9 @@
     <div id="splash" ng-show="splash">
         <button type="button" ng-click="init()"><span>Play</span></button>
     </div>
+    <div id="replay" ng-show="replay">
+        <button type="button" ng-click="init()"><span>Congrats!\nPlay again?</span></button>
+    </div>
     <div id="wrapper">
         <div id="doboz">
             <gomboc ng-repeat="item in items" ng-click="katt(item)"></gomboc>
