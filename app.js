@@ -57,6 +57,8 @@ app.service('icons', ['$http', '$rootScope', '$q', function($http, $rootScope, $
 app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $timeout, icons) {
     // show the splash or not
     $scope.splash = true;
+    // set up the replay screen
+    $scope.replay = false;
 
     // the Fisher-Yates shuffle
     $scope.shuffle = function(array) {
@@ -84,7 +86,9 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
         icons.getPics()
             .then(function(response) {
                 $scope.items = $scope.shuffle(response);
+                // neither of the non-game screens should be displayed
                 $scope.splash = false;
+                $scope.replay = false;
             })
             .catch(function(error) {
                 console.error('Failed!', error)
@@ -126,7 +130,15 @@ app.controller('MainCtrl', ['$scope', '$timeout', 'icons', function($scope, $tim
                 // tán angular.copy-val?
             });
             */
-            $scope.init();
+           /* replacing this for now with just toggling the replay param on
+           when all the pairs are found
+            $scope.init(replay=true);
+            */
+           // make them 'un-found' again so they don't show up over the replay screen
+           $scope.items.forEach((item) => {
+            item.found = !item.found;
+           });
+           $scope.replay = true;
         }
     };
 }]);
